@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   namespace 'api' do
     namespace 'v1' do
-      resources :users, :only=>[:index,:show,:create,:update,:destroy] # route /api/v1/users
+      resources :users, :only => [:index, :show, :create, :update, :destroy]      # route /api/v1/users
+      resources :movements, :only => [:index, :show, :create]                     # route /api/v1/movements
     end
   end
 end

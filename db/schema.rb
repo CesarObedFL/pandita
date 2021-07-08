@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_043921) do
+ActiveRecord::Schema.define(version: 2021_07_08_040328) do
+
+  create_table "movements", charset: "utf8", collation: "utf8_spanish_ci", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.string "operation"
+    t.integer "destinationAccount"
+    t.bigint "amount"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_movements_on_user_id"
+  end
 
   create_table "users", charset: "utf8", collation: "utf8_spanish_ci", force: :cascade do |t|
     t.integer "accountNumber"
@@ -21,6 +31,8 @@ ActiveRecord::Schema.define(version: 2021_07_07_043921) do
     t.bigint "balance"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["accountNumber"], name: "index_users_on_accountNumber", unique: true
   end
 
+  add_foreign_key "movements", "users"
 end
