@@ -1,9 +1,11 @@
 module Api 
     module V1
         class UsersController < ApplicationController
+            # actions only permited by authenticated users
             before_action :authenticate_user, except: [:create]
-            #skip_before_action :verify_authenticity_token # to test the api, we skip the auth token...
             
+            protect_from_forgery with: :null_session # This is to allow the registration of new users
+
             #api/v1/users#index (get)
             def index
                 render json: User.all

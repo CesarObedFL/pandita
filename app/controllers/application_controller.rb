@@ -1,5 +1,9 @@
 class ApplicationController < ActionController::Base
     include Knock::Authenticable
+
+    # Prevent CSRF attacks by raising an exception.
+    protect_from_forgery with: :exception
+    
     #exception handling...
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordNotDestroyed, with: :record_not_destroyed

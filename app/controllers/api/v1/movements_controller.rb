@@ -1,8 +1,8 @@
 module Api
     module V1
         class MovementsController < ApplicationController
+            # actions only permited by authenticated users
             before_action :authenticate_user
-            #skip_before_action :verify_authenticity_token
             
             #api/v1/movements#index (get)
             def index 
@@ -12,14 +12,14 @@ module Api
             #api/v1/movements#show (get - :id)
             # show all the movements of one user by id
             def show
-                movements = Movement.find(params[:id]).user.movements
+                movements = User.find(params[:id]).movements # obtain records using the relation
                 render json: movements, status: :ok
             end
 
             #api/v1/movements#create (post)
             # use the user_id to find and create a record in movement
             def create
-                movement = User.find(params['user_id']).movements.new(movement_params)
+                movement = User.find(params['user_id']).movements.new(movement_params) # create records using the relation
                 if movement.save
                     render json: movement, status: :created
                 else

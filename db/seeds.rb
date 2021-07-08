@@ -4,8 +4,8 @@ Movement.create({ user_id: 1, operation: 'deposit', destinationAccount: "", amou
 5.times do |i|
     User.create({
         accountNumber: rand(1000..9999),
-        name: 'User #{i + 2}',
-        email: 'user#{i + 2}@test.com',
+        name: "User #{i + 2}",
+        email: "user#{i + 2}@test.com",
         password: 'secret',
         password_confirmation: 'secret',
         age: rand(18..76),
@@ -14,7 +14,7 @@ Movement.create({ user_id: 1, operation: 'deposit', destinationAccount: "", amou
     });
 
     Movement.create({
-        user_id: '#{i + 2}',
+        user_id: "#{i + 2}",
         operation: 'deposit',
         destinationAccount: '',
         amount: 1000
