@@ -22,7 +22,7 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
-
+* -------------- DOCUMENTACIÓN ---------------------
 * instalar ruby
 * instalar node
 * instalar rails - gem install rails
