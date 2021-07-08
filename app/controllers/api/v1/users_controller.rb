@@ -1,7 +1,8 @@
 module Api 
     module V1
         class UsersController < ApplicationController
-            skip_before_action :verify_authenticity_token # to test the api, we skip the auth token...
+            before_action :authenticate_user, except: [:create]
+            #skip_before_action :verify_authenticity_token # to test the api, we skip the auth token...
             
             #api/v1/users#index (get)
             def index
@@ -41,7 +42,7 @@ module Api
             
             private
             def user_params
-                params.permit(:name, :email, :age, :phone)
+                params.permit(:name, :email, :password, :password_confirmation, :age, :phone)
             end
         end
     end

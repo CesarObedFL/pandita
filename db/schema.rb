@@ -24,11 +24,12 @@ ActiveRecord::Schema.define(version: 2021_07_08_040328) do
 
   create_table "users", charset: "utf8", collation: "utf8_spanish_ci", force: :cascade do |t|
     t.integer "accountNumber"
-    t.string "name"
-    t.string "email"
+    t.string "name", null: false
+    t.string "email", null: false
+    t.string "password_digest"
     t.integer "age"
-    t.bigint "phone"
-    t.bigint "balance"
+    t.bigint "phone", null: false
+    t.bigint "balance", default: 0
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["accountNumber"], name: "index_users_on_accountNumber", unique: true

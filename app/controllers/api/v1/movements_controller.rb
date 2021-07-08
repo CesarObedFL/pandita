@@ -1,7 +1,8 @@
 module Api
     module V1
         class MovementsController < ApplicationController
-            skip_before_action :verify_authenticity_token
+            before_action :authenticate_user
+            #skip_before_action :verify_authenticity_token
             
             #api/v1/movements#index (get)
             def index 

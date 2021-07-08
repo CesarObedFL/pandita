@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+    include Knock::Authenticable
     #exception handling...
     rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
     rescue_from ActiveRecord::RecordNotDestroyed, with: :record_not_destroyed
